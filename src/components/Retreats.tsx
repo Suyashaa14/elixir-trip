@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import {  useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-import { ExperienceFlow } from "../booking/ExperienceFlow";
+// import { ExperienceFlow } from "../booking/ExperienceFlow";
 import type { RetreatKey } from "../booking/demoData";
 
 // special split/animated cards
@@ -22,13 +22,13 @@ const CARDS: Card[] = [
 export const Retreats = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [flowOpen, setFlowOpen] = useState(false);
-  const [selected, setSelected] = useState<RetreatKey>("weightloss");
+  // const [flowOpen, setFlowOpen] = useState(false);
+  // const [selected, setSelected] = useState<RetreatKey>("weightloss");
 
-  const open = (k: RetreatKey) => {
-    setSelected(k);
-    setFlowOpen(true);
-  };
+  // const open = (k: RetreatKey) => {
+  //   setSelected(k);
+  //   setFlowOpen(true);
+  // };
 
   return (
     <section id="retreats" ref={ref} className="py-20">
@@ -69,7 +69,7 @@ export const Retreats = () => {
         </div>
       </div>
 
-      <ExperienceFlow open={flowOpen} onOpenChange={setFlowOpen} retreat={selected} />
+      {/* <ExperienceFlow open={flowOpen} onOpenChange={setFlowOpen} retreat={selected} /> */}
     </section>
   );
 };
