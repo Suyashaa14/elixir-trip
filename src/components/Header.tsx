@@ -52,7 +52,7 @@ export const Header = () => {
               ${isScrolled ? "text-white" : "text-white"}`}
               style={{ fontSize: "1.65rem", lineHeight: 1 }}
             >
-              Elixir Trips
+              Elixir Trip
             </span>
           </button>
 

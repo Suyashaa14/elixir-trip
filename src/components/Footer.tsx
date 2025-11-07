@@ -20,7 +20,7 @@ export const Footer = () => {
                 <Leaf className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-serif text-2xl font-bold text-neutral-900">
-                Elixir Trips
+                Elixir Trip
               </h3>
             </div>
 
