@@ -1,4 +1,3 @@
-import { Leaf } from "lucide-react";
 import logo from "../assets/newlogo2.jpg";
 
 

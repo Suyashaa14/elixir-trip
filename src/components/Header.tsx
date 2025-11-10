@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "../components/ui/button";
-import logo from "../assets/newlogo3.png"; // ← your logo file
+import logo from "../assets/newlogo3.png"; 
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,7 +50,7 @@ export const Header = () => {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {nav.map((item, i) => (
+            {nav.map((item) => (
               <button
                 key={item.id}
                 onClick={() => go(item.id)}

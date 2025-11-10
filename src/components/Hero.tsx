@@ -23,9 +23,9 @@ export const Hero = () => {
     setReady(true); // reveal content (we’ll show gradient fallback instead of video)
   };
 
-  const scrollToRetreats = () => {
-    document.getElementById("retreats")?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToRetreats = () => {
+  //   document.getElementById("retreats")?.scrollIntoView({ behavior: "smooth" });
+  // };
 
   return (
     <section
