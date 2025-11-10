@@ -1,4 +1,6 @@
 import { Leaf } from "lucide-react";
+import logo from "../assets/newlogo2.jpg";
+
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -16,12 +18,13 @@ export const Footer = () => {
           {/* Brand section */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/30">
-                <Leaf className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="font-serif text-2xl font-bold text-neutral-900">
-                Elixir Trip
-              </h3>
+           
+              <div className="flex items-center gap-3 mb-4">
+              <img src={logo} alt="Elixir Trip" className="h-10 w-auto rounded-md object-contain" />
+              <span className="text-2xl font-serif font-bold text-[hsl(var(--foreground))]">
+                Elixir Trips
+              </span>
+            </div>
             </div>
 
             <p className="mb-3 max-w-md text-neutral-600 leading-relaxed">

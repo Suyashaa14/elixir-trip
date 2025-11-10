@@ -26,7 +26,7 @@ export default function WeightLossCard({ title, subtitle, onExplore }: Props) {
               "radial-gradient(60% 45% at 50% 50%, rgba(0, 200, 180, 0.16) 0%, rgba(0,0,0,0) 60%)",
           }}
         />
-        <WeightLossOrbitBG ring={320} radius={108} icon={24} spin={28} centerWidth={170} />
+        <WeightLossOrbitBG ring={320} radius={108} icon={24} spin={60} centerWidth={170} />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-white/60 to-transparent" />
       </div>
 

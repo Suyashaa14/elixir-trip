@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+// src/sections/cards/DigitalDetoxCard.tsx
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import DigitalDetoxSignalBG from "./DigitalDetoxSignalBG";
 
 type Props = {
@@ -8,10 +10,30 @@ type Props = {
 };
 
 export default function DigitalDetoxCard({ title, subtitle, onExplore }: Props) {
+  // Observe this card
+  const ref = useRef<HTMLDivElement | null>(null);
+  const inView = useInView(ref, {
+    once: false,         // allow re-trigger on re-enter
+    amount: 0.45,        // ~45% of card visible
+    margin: "0px 0px -10% 0px",
+  });
+
+  // Toggle the key so the BG remounts (and animations restart) on enter
+  const playKey = inView ? "play" : "idle";
+
   return (
-    <article className="group relative overflow-hidden rounded-[24px] shadow-sm hover:shadow-md transition-shadow bg-white">
-      {/* Top cinematic animation */}
-      <DigitalDetoxSignalBG height={320} wifiSize={168} phoneSize={164} chipSize={44} />
+    <article
+      ref={ref}
+      className="group relative overflow-hidden rounded-[24px] shadow-sm hover:shadow-md transition-shadow bg-white"
+    >
+      {/* Top cinematic animation (remounts when inView toggles) */}
+      <DigitalDetoxSignalBG
+        key={playKey}
+        height={320}
+        wifiSize={168}
+        phoneSize={164}
+        chipSize={44}
+      />
 
       {/* Separator */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />

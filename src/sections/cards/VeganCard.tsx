@@ -1,22 +1,38 @@
 // src/sections/cards/VeganCard.tsx
+import { useRef, useEffect, useState } from "react";
+import { useInView } from "framer-motion";
 import VeganCircleRevealBG from "./VeganCircleRevealBG";
-import veganCircle from "../../assets/vegan-circle.jpg"; // square collage
-import veganBowl   from "../../assets/vegan-bowl.png";   // transparent PNG/WebP
+import veganCircle from "../../assets/vegan-circle.jpg";
+import veganBowl   from "../../assets/vegan-bowl.png";
 
 type Props = { title: string; subtitle: string; onExplore: () => void };
 
 export default function VeganCard({ title, subtitle, onExplore }: Props) {
+  // 👇 watch the visual area coming into view
+  const visualRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(visualRef, { amount: 0.6, once: false });
+
+  // bump a key whenever we ENTER view → forces a very light remount = replay
+  const [playKey, setPlayKey] = useState(0);
+  useEffect(() => {
+    if (isInView) setPlayKey((k) => k + 1);
+  }, [isInView]);
+
   return (
-    
     <article className="group relative overflow-hidden rounded-[24px] border border-black/5 bg-white/80 shadow-sm hover:shadow-md transition-shadow">
       {/* Animation area */}
-      <div className="relative h-[320px] rounded-t-[24px] overflow-hidden bg-gradient-to-b from-emerald-50 via-white to-white flex items-center justify-center">
+      <div
+        ref={visualRef}
+        className="relative h-[320px] rounded-t-[24px] overflow-hidden bg-gradient-to-b from-emerald-50 via-white to-white flex items-center justify-center"
+      >
         <VeganCircleRevealBG
+          key={playKey}          
+          playKey={playKey}      
           size={300}
           revealDelay={0.20}
-          revealDuration={2.0}  // slower sweep
+          revealDuration={2.0}
           holdDuration={0.25}
-          fadeDuration={0.35}   // plate gone before bowl starts
+          fadeDuration={0.35}
           bowlSize={176}
           foodCircleSrc={veganCircle}
           bowlSrc={veganBowl}
@@ -40,9 +56,7 @@ export default function VeganCard({ title, subtitle, onExplore }: Props) {
             <span className="underline underline-offset-4 decoration-black/30 group-hover:decoration-black">
               Explore Programs
             </span>
-            <span className="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden>
-              →
-            </span>
+            <span className="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden>→</span>
           </button>
         </div>
       </div>

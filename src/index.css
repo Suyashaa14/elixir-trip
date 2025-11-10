@@ -4,7 +4,6 @@
 /* === Your previous project’s palette (unchanged) === */
 @layer base {
   :root {
-    /* Vibrant Wellness Color System - Turquoise & Warm Wood */
     --background: 42 45% 96%;
     --foreground: 195 20% 20%;
 
@@ -14,13 +13,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 195 20% 20%;
 
-    /* Vibrant Turquoise - Primary Brand Color */
     --primary: 180 65% 48%;
     --primary-foreground: 0 0% 100%;
     --primary-light: 180 65% 68%;
     --primary-dark: 180 65% 35%;
 
-    /* Support Palettes */
     --secondary: 35 45% 88%;
     --secondary-foreground: 195 25% 18%;
 
@@ -39,7 +36,6 @@
 
     --radius: 1rem;
 
-    /* Nice extras used in the old site */
     --gradient-turquoise: linear-gradient(135deg, hsl(180 65% 58%), hsl(180 65% 45%));
     --gradient-warm:      linear-gradient(135deg, hsl(35 55% 88%), hsl(35 45% 80%));
     --gradient-hero:      linear-gradient(135deg, hsl(180 65% 48% / 0.15), hsl(35 45% 85% / 0.15));
@@ -85,15 +81,13 @@
     --ring: 180 65% 55%;
   }
 
-  /* Old custom shadow helpers */
   .shadow-soft     { box-shadow: var(--shadow-soft); }
   .shadow-elegant  { box-shadow: var(--shadow-elegant); }
   .shadow-floating { box-shadow: var(--shadow-floating); }
   .shadow-glow     { box-shadow: var(--shadow-glow); }
 }
 
-/* === Shim: re-create your common Tailwind color utilities (no tailwind.config needed) === */
-/* Background */
+
 @layer utilities {
   .bg-background            { background-color: hsl(var(--background)); }
   .bg-foreground            { background-color: hsl(var(--foreground)); }
@@ -107,7 +101,6 @@
   .bg-accent                { background-color: hsl(var(--accent)); }
   .bg-destructive           { background-color: hsl(var(--destructive)); }
 
-  /* Text */
   .text-background          { color: hsl(var(--background)); }
   .text-foreground          { color: hsl(var(--foreground)); }
   .text-card-foreground     { color: hsl(var(--card-foreground)); }
@@ -118,13 +111,11 @@
   .text-accent-foreground   { color: hsl(var(--accent-foreground)); }
   .text-destructive-foreground { color: hsl(var(--destructive-foreground)); }
 
-  /* Borders / Ring / Inputs */
   .border-border            { border-color: hsl(var(--border)); }
   .border-input             { border-color: hsl(var(--input)); }
   .ring-ring                { --tw-ring-color: hsl(var(--ring)); }
   .outline-ring             { outline-color: hsl(var(--ring)); }
 
-  /* Gradients (aliases for “from-*, via-*, to-*”) */
   .from-background          { --tw-gradient-from: hsl(var(--background)) var(--tw-gradient-from-position); --tw-gradient-to: hsl(var(--background)/0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
   .from-foreground          { --tw-gradient-from: hsl(var(--foreground)) var(--tw-gradient-from-position); --tw-gradient-to: hsl(var(--foreground)/0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
   .from-primary             { --tw-gradient-from: hsl(var(--primary)) var(--tw-gradient-from-position); --tw-gradient-to: hsl(var(--primary)/0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
@@ -146,12 +137,6 @@
   .to-accent                { --tw-gradient-to: hsl(var(--accent)) var(--tw-gradient-to-position); }
   .to-muted                 { --tw-gradient-to: hsl(var(--muted)) var(--tw-gradient-to-position); }
 
-  /* Radius aliases */
   .rounded-card { border-radius: var(--radius); }
 }
 
-/* NOTE:
-   These shims cover the most common color names used across shadcn/ui and your old components.
-   For rare patterns like `from-primary/30` (with slash opacity), keep using arbitrary values:
-   `from-[hsl(var(--primary)/0.30)]`
-*/

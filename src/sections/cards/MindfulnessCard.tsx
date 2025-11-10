@@ -1,4 +1,6 @@
+// src/sections/cards/MindfulnessCard.tsx
 import { motion } from "framer-motion";
+import mindGif from "../../assets/giphy.gif"; // ✅ use relative import, not C:\ path
 
 type Props = {
   title: string;
@@ -12,12 +14,14 @@ export default function MindfulnessCard({ title, subtitle, onExplore }: Props) {
       {/* Top animated GIF area */}
       <div className="relative h-[320px] overflow-hidden flex items-center justify-center bg-gradient-to-b from-rose-50 to-white">
         <motion.img
-          src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG9pbzBpaHJhYjJ3NHVwOWp5eHA4enk3emhoZ2wwbnExYno3cTZwMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/82va27KArDpk9nS97u/giphy.gif"
+          src={mindGif}                         // ✅ local asset
           alt="Mindfulness Animation"
           className="absolute inset-0 w-full h-full object-contain"
-          initial={{ opacity: 0, scale: 0.9 }}
+          loading="eager"                        // start loading right away
+          decoding="async"
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
         />
 
         {/* Subtle overlay for depth */}
