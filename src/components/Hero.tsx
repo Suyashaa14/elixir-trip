@@ -16,16 +16,12 @@ export const Hero = () => {
     return () => clearTimeout(id);
   }, []);
 
-  // When the video metadata or first frame is available, show content
   const markReady = () => setReady(true);
   const markError = () => {
     setFailed(true);
     setReady(true); // reveal content (we’ll show gradient fallback instead of video)
   };
 
-  // const scrollToRetreats = () => {
-  //   document.getElementById("retreats")?.scrollIntoView({ behavior: "smooth" });
-  // };
 
   return (
     <section
