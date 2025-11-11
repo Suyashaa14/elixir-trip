@@ -3,15 +3,23 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "../components/ui/button";
-import logo from "../assets/newlogo3.png"; 
+import logoLight from "../assets/newlogo4.png"; // for light header bg (scrolled)
+import logoDark from "../assets/newlogo5.png";  // for transparent over dark hero
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    // Preload both logos so swapping is instant
+    [logoLight, logoDark].forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
     const onScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
+    onScroll(); // set initial state
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -28,6 +36,9 @@ export const Header = () => {
     setOpen(false);
   };
 
+  // Swap logo exactly when header background appears
+  const currentLogo = isScrolled ? logoLight : logoDark;
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -38,12 +49,12 @@ export const Header = () => {
     >
       <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
-          {/* Brand (logo only, no rotating, no extra text) */}
+          {/* Brand */}
           <button onClick={() => go("hero")} className="flex items-center gap-3">
             <img
-              src={logo}
+              src={currentLogo}
               alt="Elixir Trip"
-              className="h-20 w-auto rounded-md object-contain"
+              className="h-20 w-auto rounded-md object-contain transition-opacity"
               style={{ filter: isScrolled ? "none" : "drop-shadow(0 2px 8px rgba(0,0,0,.35))" }}
             />
           </button>
@@ -58,16 +69,20 @@ export const Header = () => {
                 ${isScrolled ? "text-[hsl(var(--foreground))]" : "text-white"} group`}
               >
                 {item.label}
-                <span className={`absolute -bottom-1 left-0 h-0.5 w-0 group-hover:w-full transition-all
-                ${isScrolled ? "bg-[hsl(var(--primary))]" : "bg-white"}`} />
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 w-0 group-hover:w-full transition-all
+                  ${isScrolled ? "bg-[hsl(var(--primary))]" : "bg-white"}`}
+                />
               </button>
             ))}
 
             <Button
               onClick={() => go("contact")}
-              className={`${isScrolled
-                ? "bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:bg-[hsl(var(--primary)/0.9)]"
-                : "bg-white/15 text-white border border-white/30 hover:bg-white/25"} rounded-full px-5`}
+              className={`${
+                isScrolled
+                  ? "bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:bg-[hsl(var(--primary)/0.9)]"
+                  : "bg-white/15 text-white border border-white/30 hover:bg-white/25"
+              } rounded-full px-5`}
             >
               Plan Your Journey
             </Button>
@@ -78,7 +93,7 @@ export const Header = () => {
             onClick={() => setOpen(!open)}
             className={`${isScrolled ? "text-[hsl(var(--foreground))]" : "text-white"} md:hidden p-2`}
           >
-            {open ? <X className="w-6 h-6"/> : <Menu className="w-6 h-6"/>}
+            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 

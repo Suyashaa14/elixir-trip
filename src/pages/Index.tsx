@@ -6,6 +6,7 @@ import { Testimonials } from "../components/Testimonials";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 import UpcomingRetreats from "@/components/UpcomingRetreats";
+import NewRetreats from "@/components/NewRetreats";
 
 const Index = () => {
   return (
@@ -13,7 +14,9 @@ const Index = () => {
       <Header />
       <Hero />
       <Philosophy />
-      <Retreats />
+      {/* <Retreats />
+       */}
+       <NewRetreats/>
       <UpcomingRetreats/>
       <Testimonials />
       <Contact />
