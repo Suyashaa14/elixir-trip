@@ -67,8 +67,8 @@ export const NewRetreats = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // Booking flow
-  const [flowOpen, setFlowOpen] = useState(false);
-  const [selected, setSelected] = useState<RetreatKey>("vegan"); // default to vegan since weightloss is removed
+  // const [flowOpen, setFlowOpen] = useState(false);
+  // const [selected, setSelected] = useState<RetreatKey>("vegan"); // default to vegan since weightloss is removed
 
   return (
     <section id="retreats" className="py-24 bg-white" ref={ref}>
@@ -137,10 +137,10 @@ export const NewRetreats = () => {
 
                   <div className="mt-6">
                     <Button
-                      onClick={() => {
-                        setSelected(r.key);
-                        setFlowOpen(true);
-                      }}
+                      // onClick={() => {
+                      //   setSelected(r.key);
+                      //   setFlowOpen(true);
+                      // }}
                       className="rounded-xl px-6 py-5 text-sm font-semibold shadow-sm bg-gray-900 text-white hover:bg-gray-800"
                     >
                       I want this experience
